@@ -1,0 +1,30 @@
+language: php
+
+php:
+    - 7.1
+    - 7.2
+
+cache:
+    directories:
+        - $HOME/.composer
+
+env:
+    matrix:
+        - ADDITIONAL_COMPOSER_ARGS=""
+
+matrix:
+    fast_finish: true
+    include:
+        - php: nightly
+          env:
+            - ADDITIONAL_COMPOSER_ARGS="--ignore-platform-reqs"; PHP_CS_FIXER_IGNORE_ENV=1
+    allow_failures:
+        - php: nightly
+
+sudo: false
+
+install:
+    - travis_retry composer update --no-suggest --no-progress --no-interaction --prefer-dist $ADDITIONAL_COMPOSER_ARGS
+
+script:
+- ./vendor/bin/grumphp run

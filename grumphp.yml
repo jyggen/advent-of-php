@@ -1,0 +1,8 @@
+parameters:
+    extensions:
+        - Boo\CodeStandard\GrumPHP
+    tasks:
+        phpmnd:
+            exclude:
+                - tests
+        phpunit: ~
