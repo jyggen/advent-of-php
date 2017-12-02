@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of boo/advent-of-php.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+namespace Boo\AdventOfCode\Tests\Year{{ year }};
+
+use Boo\AdventOfCode\Tests\AbstractTestCase;
+use Boo\AdventOfCode\Year{{ year }}\Day{{ day_padded }};
+
+class Day{{ day_padded }}Test extends AbstractTestCase
+{
+    public function partOneProvider(): array
+    {
+        return [
+            [new Day{{ day_padded }}($this->loadInputFile({{ year }}, {{ day }})), null],
+        ];
+    }
+
+    public function partTwoProvider(): array
+    {
+        return [
+            [new Day{{ day_padded }}($this->loadInputFile({{ year }}, {{ day }})), null],
+        ];
+    }
+}

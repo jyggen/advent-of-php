@@ -20,7 +20,7 @@ final class Day01 implements DayInterface
     private const HALFWAY_AROUND = 2;
 
     /**
-     * @var array
+     * @var string[]
      */
     private $input;
 

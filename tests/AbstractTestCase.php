@@ -46,7 +46,7 @@ abstract class AbstractTestCase extends TestCase
 
     protected function loadInputFile(int $year, int $day): string
     {
-        $filename = \vsprintf('%s/resources/Year%u/Day%02u.txt', [
+        $filename = \vsprintf('%s/resources/inputs/Year%u/Day%02u.txt', [
             \dirname(__DIR__),
             $year,
             $day,
