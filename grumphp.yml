@@ -3,7 +3,7 @@ parameters:
         - Boo\CodeStandard\GrumPHP
     tasks:
         phpmd:
-            ruleset: []
+            triggered_by: []
         phpmnd:
             exclude:
                 - tests
