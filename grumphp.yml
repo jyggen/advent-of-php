@@ -2,6 +2,8 @@ parameters:
     extensions:
         - Boo\CodeStandard\GrumPHP
     tasks:
+        phpmd:
+            ruleset: []
         phpmnd:
             exclude:
                 - tests

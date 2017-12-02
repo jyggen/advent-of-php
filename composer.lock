@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "be9ba78472e5154a6328da5e1ce65bc5",
+    "content-hash": "aa3ec7c3a2aedc5f5ba9a6158e5dd946",
     "packages": [
         {
             "name": "boo/code-standard",
@@ -553,6 +553,60 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "drupol/phpermutations",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drupol/phpermutations.git",
+                "reference": "fa4893c3f527eacb43b7d1c249c704980ed1dcb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drupol/phpermutations/zipball/fa4893c3f527eacb43b7d1c249c704980ed1dcb1",
+                "reference": "fa4893c3f527eacb43b7d1c249c704980ed1dcb1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "phpro/grumphp": "^0.11",
+                "phpunit/php-code-coverage": "^4.0",
+                "phpunit/phpunit": "^5.7",
+                "satooshi/php-coveralls": "^1.0",
+                "scrutinizer/ocular": "^1.3",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "drupol\\phpermutations\\": "src/",
+                    "drupol\\phpermutations\\Tests\\": "tests/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pol Dellaiera",
+                    "email": "pol.dellaiera@protonmail.com"
+                }
+            ],
+            "description": "Generate iterators for array permutations in an efficient way.",
+            "homepage": "https://github.com/drupol/phpermutations",
+            "keywords": [
+                "combinations",
+                "fibonacci",
+                "iterators",
+                "math",
+                "numbers",
+                "permutations",
+                "prime numbers",
+                "product"
+            ],
+            "time": "2017-04-10T09:37:17+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",

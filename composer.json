@@ -11,6 +11,7 @@
     ],
     "require": {
         "boo/code-standard": "^0.1",
+        "drupol/phpermutations": "^1.0",
         "phpunit/phpunit": "^6.0",
         "symfony/var-dumper": "^4.0",
         "twig/twig": "^2.0"
