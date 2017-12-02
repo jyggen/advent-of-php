@@ -36,7 +36,7 @@ $inputDir = \sprintf('resources/inputs/Year%s', $year);
 $inputFile = \sprintf('%s/Day%s.txt', $inputDir, $paddedDay);
 
 if (false === \is_dir($inputDir)) {
-    \mkdir($inputDir, null, true);
+    \mkdir($inputDir, 0755, true);
 }
 
 if (false === \is_file($inputFile)) {
@@ -54,7 +54,7 @@ $classDir = \sprintf('src/Year%s', $year);
 $classFile = \sprintf('%s/Day%s.php', $classDir, $paddedDay);
 
 if (false === \is_dir($classDir)) {
-    \mkdir($classDir, null, true);
+    \mkdir($classDir, 0755, true);
 }
 
 if (false === \is_file($classFile)) {
@@ -65,7 +65,7 @@ $testDir = \sprintf('tests/Year%s', $year);
 $testFile = \sprintf('%s/Day%sTest.php', $testDir, $paddedDay);
 
 if (false === \is_dir($testDir)) {
-    \mkdir($testDir, null, true);
+    \mkdir($testDir, 0755, true);
 }
 
 if (false === \is_file($testFile)) {
