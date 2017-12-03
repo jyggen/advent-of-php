@@ -1,3 +1,179 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of boo/advent-of-php.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+final class Maze
+{
+    /**
+     * @var array
+     */
+    private $queue;
+
+    /**
+     * @var int
+     */
+    private $startX;
+
+    /**
+     * @var int
+     */
+    private $startY;
+
+    /**
+     * @var array
+     */
+    private $stateCache;
+
+    /**
+     * @param string[][] $maze
+     */
+    public function __construct(array $maze)
+    {
+        $remaining = [];
+        $this->startY = 0;
+        $this->startX = 0;
+
+        foreach ($maze as $y => $columns) {
+            foreach ($columns as $x => $column) {
+                if ('0' === $column) {
+                    $this->startY = $y;
+                    $this->startX = $x;
+                }
+
+                if (true === \is_numeric($column)) {
+                    $maze[$y][$x] = '.';
+                    $remaining[$y][$x] = null;
+
+                    continue;
+                }
+
+                if ('.' === $column) {
+                    $maze[$y][$x] = 'o';
+                }
+            }
+        }
+
+        $this->stateCache = [];
+        $this->queue = [[
+            'state' => $maze,
+            'y' => $this->startY,
+            'x' => $this->startX,
+            'remaining' => $remaining,
+            'step' => 0,
+        ]];
+    }
+
+    public function getStartX(): int
+    {
+        return $this->startX;
+    }
+
+    public function getStartY(): int
+    {
+        return $this->startY;
+    }
+
+    public function solve(callable $winCondition = null): int
+    {
+        while (false === empty($this->queue)) {
+            $queue = array_shift($this->queue);
+            $remaining = $this->walk(
+                $queue['state'],
+                $queue['y'],
+                $queue['x'],
+                $queue['remaining'],
+                $queue['step']
+            );
+
+            if (false === empty($remaining)) {
+                continue;
+            }
+
+            $didWin = null !== $winCondition ? $winCondition($queue['y'], $queue['x']) : true;
+
+            if (false === $didWin) {
+                continue;
+            }
+
+            return $queue['step'];
+        }
+
+        return -1;
+    }
+
+    private function walk(array $rows, int $y, int $x, array $remaining, int $step): array
+    {
+        $directions = [
+            [$y - 1, $x],
+            [$y, $x + 1],
+            [$y + 1, $x],
+            [$y, $x - 1],
+        ];
+
+        if ($rows[$y][$x] === '.') {
+            $rows[$y][$x] = 'o';
+
+            unset($remaining[$y][$x]);
+
+            if (true === empty($remaining[$y])) {
+                unset($remaining[$y]);
+            }
+        }
+
+        ++$step;
+
+        foreach ($directions as $pos) {
+            if (false === isset($rows[$pos[0]][$pos[1]]) || $rows[$pos[0]][$pos[1]] === '#') {
+                continue;
+            }
+
+            $stateKey = md5(print_r([$pos[0], $pos[1], $remaining], true));
+
+            if (true === isset($this->stateCache[$stateKey]) && $this->stateCache[$stateKey] <= $step) {
+                continue;
+            }
+
+            $this->stateCache[$stateKey] = $step;
+            $this->queue[] = [
+                'state' => $rows,
+                'y' => $pos[0],
+                'x' => $pos[1],
+                'remaining' => $remaining,
+                'step' => $step,
+            ];
+        }
+
+        return $remaining;
+    }
+}
+
+$input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
+$input = array_map(function (string $row): array {
+    return str_split($row);
+}, explode("\n", $input));
+
+$maze = new Maze($input);
+
+echo $maze->solve().PHP_EOL;
+
+$maze = new Maze($input);
+
+echo $maze->solve(function (int $y, int $x) use ($maze): bool {
+    return $y === $maze->getStartY() && $x === $maze->getStartX();
+}).PHP_EOL;
+
+__halt_compiler();
 #########################################################################################################################################################################################
 #...#...............#.#...#.#.......#.....#.....#.....#...............#.....#.#.....#.....#.......#.........#.#.....#.....#.#.#...#...........#.................#.#...#.....#.....#...#.#
 #.###.#.###.###.###.#.###.#.###.#####.###.#.#.#.#.#.#.#.#.###.#.#####.#.#.#.#.#.#.###.###.#.#.#.#.###.###.#.#.#.#.###.###.#.#.#.#.#####.#####.#.#.###########.###.#.#.#.###.#.###.#.#.#.#

@@ -1,0 +1,138 @@
+{
+    "2015": {
+        "01": [
+            {
+                "input": "(())",
+                "expected": ["0", null]
+            },
+            {
+                "input": "()()",
+                "expected": ["0", null]
+            },
+            {
+                "input": "(((",
+                "expected": ["3", null]
+            },
+            {
+                "input": "(()(()(",
+                "expected": ["3", null]
+            },
+            {
+                "input": "))(((((",
+                "expected": ["3", null]
+            },
+            {
+                "input": "())",
+                "expected": ["-1", null]
+            },
+            {
+                "input": "))(",
+                "expected": ["-1", null]
+            },
+            {
+                "input": ")",
+                "expected": [null, "1"]
+            },
+            {
+                "input": "()())",
+                "expected": [null, "5"]
+            },
+            {
+                "input": null,
+                "expected": ["232", "1783"]
+            }
+        ]
+    },
+    "2016": {
+        "24": [
+            {
+                "input": "###########\n#0.1.....2#\n#.#######.#\n#4.......3#\n###########",
+                "expected": ["14", null]
+            },
+            {
+                "input": null,
+                "expected": ["448", "672"]
+            }
+        ]
+    },
+    "2017": {
+        "01": [
+            {
+                "input": "1122",
+                "expected": ["3", null]
+            },
+            {
+                "input": "1111",
+                "expected": ["4", null]
+            },
+            {
+                "input": "1234",
+                "expected": ["0", null]
+            },
+            {
+                "input": "91212129",
+                "expected": ["9", null]
+            },
+            {
+                "input": "1212",
+                "expected": [null, "6"]
+            },
+            {
+                "input": "1221",
+                "expected": [null, "0"]
+            },
+            {
+                "input": "123425",
+                "expected": [null, "4"]
+            },
+            {
+                "input": "123123",
+                "expected": [null, "12"]
+            },
+            {
+                "input": "12131415",
+                "expected": [null, "4"]
+            },
+            {
+                "input": null,
+                "expected": ["1253", "1278"]
+            }
+        ],
+        "02": [
+            {
+                "input": "5 1 9 5\n7 5 3\n2 4 6 8",
+                "expected": ["18", null]
+            },
+            {
+                "input": "5 9 2 8\n9 4 7 3\n3 8 6 5",
+                "expected": [null, "9"]
+            },
+            {
+                "input": null,
+                "expected": ["48357", "351"]
+            }
+        ],
+        "03": [
+            {
+                "input": "1",
+                "expected": ["0", null]
+            },
+            {
+                "input": "12",
+                "expected": ["3", null]
+            },
+            {
+                "input": "23",
+                "expected": ["2", null]
+            },
+            {
+                "input": "1024",
+                "expected": ["31", null]
+            },
+            {
+                "input": null,
+                "expected": ["371", "369601"]
+            }
+        ]
+    }
+}

@@ -24,7 +24,8 @@ matrix:
 sudo: false
 
 install:
-    - travis_retry composer update --no-suggest --no-progress --no-interaction --prefer-dist $ADDITIONAL_COMPOSER_ARGS
+    - travis_retry composer install --no-suggest --no-progress --no-interaction --prefer-dist $ADDITIONAL_COMPOSER_ARGS
 
 script:
-- ./vendor/bin/grumphp run
+- php test.php
+- ./vendor/bin/php-cs-fixer fix --dry-run --verbose --diff

@@ -1,3 +1,44 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of boo/advent-of-php.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+use drupol\phpermutations\Generators\Permutations;
+
+$input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
+$input = array_map(function (string $row): array {
+    preg_match_all('([\d]+)', $row, $matches);
+
+    return array_map('intval', $matches[0]);
+}, explode("\n", $input));
+
+echo array_reduce($input, function (int $carry, array $row): int {
+    return $carry + max($row) - min($row);
+}, 0).PHP_EOL;
+
+echo array_reduce($input, function (int $carry, array $row): int {
+    $permutations = new Permutations($row, 2);
+
+    foreach ($permutations->generator() as $permutation) {
+        if ($permutation[0] % $permutation[1] === 0) {
+            return $carry + $permutation[0] / $permutation[1];
+        }
+    }
+
+    return $carry;
+}, 0).PHP_EOL;
+
+__halt_compiler();
 1640	590	93	958	73	1263	1405	1363	737	712	1501	390	68	1554	959	79
 4209	128	131	2379	2568	2784	2133	145	3618	1274	3875	158	1506	3455	1621	3799
 206	1951	2502	2697	2997	74	76	78	1534	81	2775	2059	3026	77	2600	3067

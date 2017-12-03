@@ -11,13 +11,15 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Boo\AdventOfCode;
-
-interface DayInterface
+function read_input(array $argv, string $file, int $offset): string
 {
-    public function __construct(string $input);
+    if (true === isset($argv[1])) {
+        return trim($argv[1]);
+    }
 
-    public function solvePartOne();
+    $fp = fopen($file, 'rb');
 
-    public function solvePartTwo();
+    fseek($fp, $offset);
+
+    return trim(stream_get_contents($fp));
 }
