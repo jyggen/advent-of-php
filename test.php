@@ -28,7 +28,7 @@ if (null !== $day) {
 $colors = new ConsoleColor();
 $tests = json_decode(file_get_contents(__DIR__.'/test.json'), true);
 
-if (json_last_error() !== JSON_ERROR_NONE) {
+if (JSON_ERROR_NONE !== json_last_error()) {
     echo json_last_error_msg();
     exit(1);
 }
