@@ -36,7 +36,6 @@ echo count(array_filter($input, function (string $phrase): bool {
 })).PHP_EOL;
 
 __halt_compiler();
-
 bdwdjjo avricm cjbmj ran lmfsom ivsof
 mxonybc fndyzzi gmdp gdfyoi inrvhr kpuueel wdpga vkq
 bneh ylltsc vhryov lsd hmruxy ebnh pdln vdprrky
