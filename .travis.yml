@@ -23,6 +23,9 @@ matrix:
 
 sudo: false
 
+before_install:
+    - phpenv config-rm xdebug.ini || return 0
+
 install:
     - travis_retry composer install --no-suggest --no-progress --no-interaction --prefer-dist $ADDITIONAL_COMPOSER_ARGS
 
