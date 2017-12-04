@@ -77,6 +77,20 @@
                 "input": null,
                 "expected": ["2572", "2631"]
             }
+        ],
+        "04": [
+            {
+                "input": "abcdef",
+                "expected": ["609043", null]
+            },
+            {
+                "input": "pqrstuv",
+                "expected": ["1048970", null]
+            },
+            {
+                "input": null,
+                "expected": ["346386", "9958218"]
+            }
         ]
     },
     "2016": {

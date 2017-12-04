@@ -28,4 +28,4 @@ install:
 
 script:
 - php test.php
-- ./vendor/bin/php-cs-fixer fix --dry-run --verbose --diff
+- ./vendor/bin/php-cs-fixer fix --dry-run --verbose --diff --diff-format=udiff

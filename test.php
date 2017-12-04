@@ -27,6 +27,12 @@ if (null !== $day) {
 
 $colors = new ConsoleColor();
 $tests = json_decode(file_get_contents(__DIR__.'/test.json'), true);
+
+if (json_last_error() !== JSON_ERROR_NONE) {
+    echo json_last_error_msg();
+    exit(1);
+}
+
 $pathRegex = '/^([\d]{4})\/([\d]{2}).*\.php$/';
 $finder = new Finder();
 $files = [];
