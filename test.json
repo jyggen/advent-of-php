@@ -55,6 +55,28 @@
                 "input": null,
                 "expected": ["1586300", "3737498"]
             }
+        ],
+        "03": [
+            {
+                "input": ">",
+                "expected": ["2", null]
+            },
+            {
+                "input": "^>v<",
+                "expected": ["4", "3"]
+            },
+            {
+                "input": "^v^v^v^v^v",
+                "expected": ["2", "11"]
+            },
+            {
+                "input": "^v",
+                "expected": [null, "3"]
+            },
+            {
+                "input": null,
+                "expected": ["2572", "2631"]
+            }
         ]
     },
     "2016": {
