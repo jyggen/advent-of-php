@@ -79,22 +79,24 @@ foreach ($files as $year => $days) {
             $output = explode(PHP_EOL, trim($process->getOutput()));
 
             if ($test['expected'][0] !== null && $test['expected'][0] !== $output[0]) {
-                echo vsprintf("[%s] %s (part 1)\n\nExpected: %s\nActual:   %s\n", [
+                echo vsprintf("[%s] %s (part 1)\n\nInput: %s\n\nExpected: %s\nActual:   %s\n", [
                     $colors->apply('red', 'FAIL'),
                     $file->getRelativePathname(),
-                    $test['expected'][0],
-                    $output[0],
+                    str_replace("\n", $colors->apply('cyan', '\n'), $test['input']),
+                    $colors->apply('green', $test['expected'][0]),
+                    $colors->apply('red', $output[0]),
                 ]);
 
                 exit(1);
             }
 
             if ($test['expected'][1] !== null && $test['expected'][1] !== $output[1]) {
-                echo vsprintf("[%s] %s (part 2)\n\nExpected: %s\nActual:   %s\n", [
+                echo vsprintf("[%s] %s (part 2)\n\nInput: %s\n\nExpected: %s\nActual:   %s\n", [
                     $colors->apply('red', 'FAIL'),
                     $file->getRelativePathname(),
-                    $test['expected'][1],
-                    $output[1],
+                    str_replace("\n", $colors->apply('cyan', '\n'), $test['input']),
+                    $colors->apply('green', $test['expected'][1]),
+                    $colors->apply('red', $output[1]),
                 ]);
 
                 exit(1);

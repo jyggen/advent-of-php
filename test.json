@@ -91,6 +91,48 @@
                 "input": null,
                 "expected": ["346386", "9958218"]
             }
+        ],
+        "05": [
+            {
+                "input": "ugknbfddgicrmopn",
+                "expected": ["1", null]
+            },
+            {
+                "input": "aaa",
+                "expected": ["1", null]
+            },
+            {
+                "input": "jchzalrnumimnmhp",
+                "expected": ["0", null]
+            },
+            {
+                "input": "haegwjzuvuyypxyu",
+                "expected": ["0", null]
+            },
+            {
+                "input": "dvszwmarrgswjxmb",
+                "expected": ["0", null]
+            },
+            {
+                "input": "qjhvhtzxzqqjkmpb",
+                "expected": [null, "1"]
+            },
+            {
+                "input": "xxyxx",
+                "expected": [null, "1"]
+            },
+            {
+                "input": "uurcxstgmygtbstg",
+                "expected": [null, "0"]
+            },
+            {
+                "input": "ieodomkazucvgmuy",
+                "expected": [null, "0"]
+            },
+            {
+                "input": null,
+                "expected": ["236", "51"]
+            }
         ]
     },
     "2016": {
