@@ -14,7 +14,7 @@ declare(strict_types=1);
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$input = preg_split("/\s/", $input);
+$input = preg_split('/\s/', $input);
 $maze = $input;
 $step = 0;
 $i = 0;
