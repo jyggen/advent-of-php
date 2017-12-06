@@ -60,7 +60,7 @@ final class Reallocator
 }
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$input = preg_split('/\s/', $input);
+$input = array_map('intval', preg_split('/\s+/', $input));
 $stateHash = json_encode($input);
 $seenStates = [$stateHash];
 $reallocator = new Reallocator($input);
