@@ -20,17 +20,17 @@ $registry = [];
 $highest = 0;
 
 foreach ($input as $instruction) {
-    if(preg_match($regex, $instruction, $match) !== 1) {
+    if (1 !== preg_match($regex, $instruction, $match)) {
         throw new RuntimeException(sprintf('Unable to parse "%s"', $instruction));
     }
 
     [, $register, $change, $value, $checkRegister, $condition, $checkValue] = $match;
 
-    if (array_key_exists($register, $registry) === false) {
+    if (false === array_key_exists($register, $registry)) {
         $registry[$register] = 0;
     }
 
-    if (array_key_exists($checkRegister, $registry) === false) {
+    if (false === array_key_exists($checkRegister, $registry)) {
         $registry[$checkRegister] = 0;
     }
 

@@ -25,7 +25,7 @@
         ]
     },
     "scripts": {
-        "fix": "php-cs-fixer fix --dry-run --verbose --diff --diff-format=udiff",
+        "fix": "php-cs-fixer fix --verbose --diff --diff-format=udiff",
         "test": "php ./test.php"
     }
 }
