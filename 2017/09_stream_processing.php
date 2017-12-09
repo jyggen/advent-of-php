@@ -15,34 +15,31 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $input = preg_replace('/!./', '', $input);
-$input = explode("\n", $input);
+$characters = str_split($input);
+
 $score = 0;
 $garbage = 0;
+$groupDepth = 0;
+$isGarbage = false;
 
-foreach ($input as $row) {
-    $characters = str_split($row);
-    $groupDepth = 0;
-    $isGarbage = false;
-
-    foreach ($characters as $character) {
-        switch (true) {
-            case '>' === $character:
-                $isGarbage = false;
-                break;
-            case true === $isGarbage:
-                $garbage++;
-                break;
-            case '<' === $character:
-                $isGarbage = true;
-                break;
-            case '{' === $character:
-                $groupDepth++;
-                break;
-            case '}' === $character:
-                $score += $groupDepth;
-                --$groupDepth;
-                break;
-        }
+foreach ($characters as $character) {
+    switch (true) {
+        case '>' === $character:
+            $isGarbage = false;
+            break;
+        case true === $isGarbage:
+            $garbage++;
+            break;
+        case '<' === $character:
+            $isGarbage = true;
+            break;
+        case '{' === $character:
+            $groupDepth++;
+            break;
+        case '}' === $character:
+            $score += $groupDepth;
+            --$groupDepth;
+            break;
     }
 }
 
