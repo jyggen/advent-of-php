@@ -28,13 +28,13 @@ foreach ($characters as $character) {
             $isGarbage = false;
             break;
         case true === $isGarbage:
-            $garbage++;
+            ++$garbage;
             break;
         case '<' === $character:
             $isGarbage = true;
             break;
         case '{' === $character:
-            $groupDepth++;
+            --$groupDepth;
             break;
         case '}' === $character:
             $score += $groupDepth;
