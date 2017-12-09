@@ -34,7 +34,7 @@ foreach ($characters as $character) {
             $isGarbage = true;
             break;
         case '{' === $character:
-            --$groupDepth;
+            ++$groupDepth;
             break;
         case '}' === $character:
             $score += $groupDepth;
