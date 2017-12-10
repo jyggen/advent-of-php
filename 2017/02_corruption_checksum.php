@@ -16,17 +16,17 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 use drupol\phpermutations\Generators\Permutations;
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$input = array_map(function (string $row): array {
+$input = array_map(static function (string $row): array {
     preg_match_all('([\d]+)', $row, $matches);
 
     return array_map('intval', $matches[0]);
 }, explode("\n", $input));
 
-echo array_reduce($input, function (int $carry, array $row): int {
+echo array_reduce($input, static function (int $carry, array $row): int {
     return $carry + max($row) - min($row);
 }, 0).PHP_EOL;
 
-echo array_reduce($input, function (int $carry, array $row): int {
+echo array_reduce($input, static function (int $carry, array $row): int {
     $permutations = new Permutations($row, 2);
 
     foreach ($permutations->generator() as $permutation) {

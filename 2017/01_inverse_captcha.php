@@ -22,7 +22,7 @@ function match(array $input, int $offset): int
 
     return array_reduce(
         array_keys($input),
-        function (int $carry, int $key) use ($input, $length, $offset): int {
+        static function (int $carry, int $key) use ($input, $length, $offset): int {
             $compareAgainst = ($key + $offset) % $length;
 
             if ($input[$key] === $input[$compareAgainst]) {

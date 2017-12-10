@@ -59,7 +59,7 @@ $sparseHash = knot_hash($bytes, 64);
 $denseHash = [];
 
 foreach (array_chunk($sparseHash, 16) as $block) {
-    $denseHash[] = array_reduce($block, function (?int $carry, int $value): int {
+    $denseHash[] = array_reduce($block, static function (?int $carry, int $value): int {
         if (null === $carry) {
             return $value;
         }

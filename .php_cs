@@ -38,6 +38,10 @@ $rules = [
     'combine_consecutive_issets' => true,
     'combine_consecutive_unsets' => true,
     'compact_nullable_typehint' => true,
+    'escape_implicit_backslashes' => true,
+    'explicit_indirect_variable' => true,
+    'explicit_string_variable' => true,
+    'final_internal_class' => true,
     'header_comment' => [
         'header' => $header,
     ],
@@ -46,6 +50,7 @@ $rules = [
     'list_syntax' => [
         'syntax' => 'short',
     ],
+    'method_chaining_indentation' => true,
     'mb_str_functions' => true,
     'no_multiline_whitespace_before_semicolons' => true,
     'no_null_property_initialization' => true,
@@ -57,10 +62,10 @@ $rules = [
     'no_useless_return' => true,
     'ordered_class_elements' => true,
     'ordered_imports' => true,
-    'php_unit_strict' => true,
     'phpdoc_add_missing_param_annotation' => true,
     'phpdoc_order' => true,
     'phpdoc_types_order' => true,
+    'static_lambda' => true,
     'strict_comparison' => true,
     'strict_param' => true,
 ];

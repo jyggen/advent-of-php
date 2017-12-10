@@ -14,7 +14,7 @@ declare(strict_types=1);
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$gifts = array_map(function ($gift): array {
+$gifts = array_map(static function ($gift): array {
     [$length, $width, $height] = explode('x', $gift);
 
     return [

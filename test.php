@@ -56,7 +56,7 @@ foreach ($finder as $file) {
     $files[$match[1]][$match[2]] = $file;
 }
 
-$testFunc = function (
+$testFunc = static function (
     SplFileInfo $file,
     int $part,
     ?string $input,

@@ -16,15 +16,15 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $input = explode("\n", $input);
 
-echo count(array_filter($input, function (string $phrase): bool {
+echo count(array_filter($input, static function (string $phrase): bool {
     $words = explode(' ', $phrase);
 
     return count($words) === count(array_unique($words));
 })).PHP_EOL;
 
-echo count(array_filter($input, function (string $phrase): bool {
+echo count(array_filter($input, static function (string $phrase): bool {
     $words = explode(' ', $phrase);
-    $words = array_map(function (string $word): string {
+    $words = array_map(static function (string $word): string {
         $letters = str_split($word);
 
         sort($letters);

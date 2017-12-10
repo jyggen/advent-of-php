@@ -16,7 +16,7 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $input = explode("\n", $input);
 
-echo array_reduce($input, function (int $carry, string $string): int {
+echo array_reduce($input, static function (int $carry, string $string): int {
     foreach (['ab', 'cd', 'pq', 'xy'] as $substring) {
         if (false !== mb_strpos($string, $substring)) {
             return $carry;
@@ -40,7 +40,7 @@ echo array_reduce($input, function (int $carry, string $string): int {
     return $carry + 1;
 }, 0).PHP_EOL;
 
-echo array_reduce($input, function (int $carry, string $string): int {
+echo array_reduce($input, static function (int $carry, string $string): int {
     $letters = str_split($string);
     $hasPair = false;
     $hasRepeat = false;

@@ -159,7 +159,7 @@ final class Maze
 }
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$input = array_map(function (string $row): array {
+$input = array_map(static function (string $row): array {
     return str_split($row);
 }, explode("\n", $input));
 
@@ -169,7 +169,7 @@ echo $maze->solve().PHP_EOL;
 
 $maze = new Maze($input);
 
-echo $maze->solve(function (int $y, int $x) use ($maze): bool {
+echo $maze->solve(static function (int $y, int $x) use ($maze): bool {
     return $y === $maze->getStartY() && $x === $maze->getStartX();
 }).PHP_EOL;
 

@@ -84,7 +84,7 @@ final class Tower
 
     public function getInclusiveWeight(): int
     {
-        return array_reduce($this->children, function (int $weight, Tower $tower): int {
+        return array_reduce($this->children, static function (int $weight, Tower $tower): int {
             return $weight + $tower->getInclusiveWeight();
         }, $this->getExclusiveWeight());
     }
@@ -102,7 +102,7 @@ final class Tower
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $input = explode("\n", $input);
-$towers = array_map(function (string $tower): Tower {
+$towers = array_map(static function (string $tower): Tower {
     $parts = explode(' -> ', $tower);
     $towerInfo = $parts[0];
     $childrenInfo = $parts[1] ?? null;
@@ -166,7 +166,7 @@ function verifyWeights(Tower $tower): ?int
     return $oddTower->getExclusiveWeight() + $weightDiff;
 }
 
-$base = array_reduce($towers, function (?Tower $carry, Tower $tower): ?Tower {
+$base = array_reduce($towers, static function (?Tower $carry, Tower $tower): ?Tower {
     if (null !== $carry) {
         return $carry;
     }
