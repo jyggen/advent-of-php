@@ -68,7 +68,7 @@ foreach (array_chunk($sparseHash, 16) as $block) {
     });
 }
 
-$denseHash = implode('', array_map(function (int $decimal): string {
+$denseHash = implode('', array_map(static function (int $decimal): string {
     return str_pad(dechex($decimal), 2, '0', STR_PAD_LEFT);
 }, $denseHash));
 
