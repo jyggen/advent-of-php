@@ -56,12 +56,31 @@ foreach ($finder as $file) {
     $files[$match[1]][$match[2]] = $file;
 }
 
+$testFunc = function (
+    SplFileInfo $file,
+    int $part,
+    ?string $input,
+    ?string $expected,
+    string $actual
+) use ($colors): void {
+    if (null === $expected || $expected === $actual) {
+        return;
+    }
+
+    echo vsprintf("[%s] %s (part %u)\n\nInput: %s\n\nExpected: %s\nActual:   %s\n", [
+        $colors->apply('red', 'FAIL'),
+        $file->getRelativePathname(),
+        $part,
+        str_replace("\n", $colors->apply('cyan', '\n'), $input),
+        $colors->apply('green', $expected),
+        $colors->apply('red', $actual),
+    ]);
+
+    exit(1);
+};
+
 foreach ($files as $year => $days) {
     foreach ($days as $day => $file) {
-        if (false === isset($tests[$year][$day])) {
-            continue;
-        }
-
         foreach ($tests[$year][$day] as $test) {
             $command = [
                 'php',
@@ -76,31 +95,22 @@ foreach ($files as $year => $days) {
 
             $process->mustRun();
 
-            $output = explode(PHP_EOL, trim($process->getOutput()));
+            $output = $process->getOutput();
+            $outputLines = explode(PHP_EOL, trim($process->getOutput()));
 
-            if ($test['expected'][0] !== null && $test['expected'][0] !== $output[0]) {
-                echo vsprintf("[%s] %s (part 1)\n\nInput: %s\n\nExpected: %s\nActual:   %s\n", [
+            if (2 !== count($outputLines)) {
+                echo vsprintf("[%s] %s\n\nInput:  %s\nOutput: %s\n", [
                     $colors->apply('red', 'FAIL'),
                     $file->getRelativePathname(),
                     str_replace("\n", $colors->apply('cyan', '\n'), $test['input']),
-                    $colors->apply('green', $test['expected'][0]),
-                    $colors->apply('red', $output[0]),
+                    str_replace("\n", $colors->apply('cyan', '\n'), $output),
                 ]);
 
                 exit(1);
             }
 
-            if ($test['expected'][1] !== null && $test['expected'][1] !== $output[1]) {
-                echo vsprintf("[%s] %s (part 2)\n\nInput: %s\n\nExpected: %s\nActual:   %s\n", [
-                    $colors->apply('red', 'FAIL'),
-                    $file->getRelativePathname(),
-                    str_replace("\n", $colors->apply('cyan', '\n'), $test['input']),
-                    $colors->apply('green', $test['expected'][1]),
-                    $colors->apply('red', $output[1]),
-                ]);
-
-                exit(1);
-            }
+            $testFunc($file, 1, $test['input'], $test['expected'][0], $outputLines[0]);
+            $testFunc($file, 2, $test['input'], $test['expected'][1], $outputLines[1]);
 
             echo vsprintf("[%s] %s\n", [
                 $colors->apply('green', 'PASS'),
