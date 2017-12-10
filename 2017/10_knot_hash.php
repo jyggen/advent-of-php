@@ -50,7 +50,8 @@ $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $lengths = explode(',', $input);
 $partOne = knot_hash($lengths, 1);
 
-echo ($partOne[0] * $partOne[1]).PHP_EOL;
+echo $partOne[0] * $partOne[1];
+echo PHP_EOL;
 
 $lengths = str_split($input);
 $bytes = array_map('ord', $lengths);
