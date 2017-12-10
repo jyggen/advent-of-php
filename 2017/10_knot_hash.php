@@ -68,7 +68,9 @@ foreach (array_chunk($sparseHash, 16) as $block) {
     });
 }
 
-$denseHash = implode('', array_map('dechex', $denseHash));
+$denseHash = implode('', array_map(function (int $decimal): string {
+    return str_pad(dechex($decimal), 2, '0', STR_PAD_LEFT);
+}, $denseHash));
 
 echo $denseHash.PHP_EOL;
 
