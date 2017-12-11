@@ -13,18 +13,21 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
+function distance(int $x, int $y): int
+{
+    return max(abs($y), abs($x), abs($y + $x));
+}
+
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $input = explode(',', $input);
+$furthest = 0;
 $x = 0;
 $y = 0;
-$z = 0;
-$furthest = 0;
 
 foreach ($input as $direction) {
     switch ($direction) {
         case 'n':
             ++$y;
-            --$z;
             break;
         case 'ne':
             ++$y;
@@ -32,11 +35,9 @@ foreach ($input as $direction) {
             break;
         case 'se':
             --$x;
-            ++$z;
             break;
         case 's':
             --$y;
-            ++$z;
             break;
         case 'sw':
             --$y;
@@ -44,16 +45,13 @@ foreach ($input as $direction) {
             break;
         case 'nw':
             ++$x;
-            --$z;
             break;
     }
 
-    $furthest = max($furthest, $distance = max(abs($y), abs($x), abs($z)));
+    $furthest = max($furthest, distance($x, $y));
 }
 
-$distance = max(abs($y), abs($x), abs($z));
-
-echo $distance.PHP_EOL;
+echo distance($x, $y).PHP_EOL;
 echo $furthest.PHP_EOL;
 
 __halt_compiler();
