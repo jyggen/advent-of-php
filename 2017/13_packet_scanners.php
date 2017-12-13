@@ -44,7 +44,7 @@ final class Firewall
             $layer = (int) $layer;
             $depth = (int) $depth;
 
-            $firewall[$layer] = $depth;
+            $firewall[$layer] = $depth * 2 - 2;
         }
 
         $this->firewall = $firewall;
@@ -54,7 +54,7 @@ final class Firewall
     public function getSeverity(): int
     {
         return array_reduce($this->detectedAt, function (int $carry, int $layer): int {
-            return $carry + $layer * $this->firewall[$layer];
+            return $carry + $layer * ($this->firewall[$layer] + 2) / 2;
         }, 0);
     }
 
@@ -70,7 +70,7 @@ final class Firewall
             }
 
             $scannerPosition = $current + $delay;
-            $scannerPosition %= $this->firewall[$current] * 2 - 2;
+            $scannerPosition %= $this->firewall[$current];
 
             if (0 === $scannerPosition) {
                 $this->detectedAt[] = $current;
