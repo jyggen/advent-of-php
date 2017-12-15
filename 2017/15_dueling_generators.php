@@ -35,11 +35,10 @@ $generators = [
 $score = 0;
 
 for ($i = 0; $i < 40000000; ++$i) {
-    foreach ($generators as $key => $value) {
-        $generators[$key] = ($value * $factors[$key]) % 2147483647;
-    }
+    $generators[0] = ($generators[0] * $factors[0]) % 2147483647;
+    $generators[1] = ($generators[1] * $factors[1]) % 2147483647;
 
-    if (substr(decbin($generators[0]), -16) === substr(decbin($generators[1]), -16)) {
+    if (($generators[0] & 0xffff) === ($generators[1] & 0xffff)) {
         ++$score;
     }
 }
@@ -54,13 +53,15 @@ $generators = [
 $score = 0;
 
 for ($i = 0; $i < 5000000; ++$i) {
-    foreach (array_keys($generators) as $key) {
-        do {
-            $generators[$key] = ($generators[$key] * $factors[$key]) % 2147483647;
-        } while ($generators[$key] % $multiples[$key] !== 0);
-    }
+    do {
+        $generators[0] = ($generators[0] * $factors[0]) % 2147483647;
+    } while ($generators[0] % $multiples[0] !== 0);
 
-    if (substr(decbin($generators[0]), -16) === substr(decbin($generators[1]), -16)) {
+    do {
+        $generators[1] = ($generators[1] * $factors[1]) % 2147483647;
+    } while ($generators[1] % $multiples[1] !== 0);
+
+    if (($generators[0] & 0xffff) === ($generators[1] & 0xffff)) {
         ++$score;
     }
 }
