@@ -489,6 +489,14 @@
             }
         ],
         "15": [
+            {
+                "input": "Generator A starts with 65\nGenerator B starts with 8921",
+                "expected": ["588", "309"]
+            },
+            {
+                "input": null,
+                "expected": ["573", "294"]
+            }
         ],
         "16": [
         ],
