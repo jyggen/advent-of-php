@@ -14,8 +14,8 @@ declare(strict_types=1);
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$up = mb_strlen(str_replace('(', '', $input));
-$down = mb_strlen(str_replace(')', '', $input));
+$up = strlen(str_replace('(', '', $input));
+$down = strlen(str_replace(')', '', $input));
 
 echo 0 - $up + $down;
 echo PHP_EOL;

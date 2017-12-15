@@ -107,7 +107,7 @@ $used = 0;
 for ($y = 0; $y < 128; ++$y) {
     $hash = knot_hash($input.'-'.$y);
     $binary = str_pad(gmp_convert($hash, 16, 2), 128, '0', STR_PAD_LEFT);
-    $used += mb_substr_count($binary, '1');
+    $used += substr_count($binary, '1');
 
     foreach (str_split($binary) as $x => $value) {
         $disk[$y][$x] = (bool) $value;

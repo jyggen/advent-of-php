@@ -39,7 +39,7 @@ for ($i = 0; $i < 40000000; ++$i) {
         $generators[$key] = ($value * $factors[$key]) % 2147483647;
     }
 
-    if (mb_substr(decbin($generators[0]), -16, null, '8bit') === mb_substr(decbin($generators[1]), -16, null, '8bit')) {
+    if (substr(decbin($generators[0]), -16) === substr(decbin($generators[1]), -16)) {
         ++$score;
     }
 }
@@ -60,7 +60,7 @@ for ($i = 0; $i < 5000000; ++$i) {
         } while ($generators[$key] % $multiples[$key] !== 0);
     }
 
-    if (mb_substr(decbin($generators[0]), -16, null, '8bit') === mb_substr(decbin($generators[1]), -16, null, '8bit')) {
+    if (substr(decbin($generators[0]), -16) === substr(decbin($generators[1]), -16)) {
         ++$score;
     }
 }

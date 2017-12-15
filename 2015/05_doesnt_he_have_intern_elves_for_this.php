@@ -18,7 +18,7 @@ $input = explode("\n", $input);
 
 echo array_reduce($input, static function (int $carry, string $string): int {
     foreach (['ab', 'cd', 'pq', 'xy'] as $substring) {
-        if (false !== mb_strpos($string, $substring)) {
+        if (false !== strpos($string, $substring)) {
             return $carry;
         }
     }
@@ -26,7 +26,7 @@ echo array_reduce($input, static function (int $carry, string $string): int {
     $vowels = 0;
 
     foreach (['a', 'e', 'i', 'o', 'u'] as $vowel) {
-        $vowels += mb_substr_count($string, $vowel);
+        $vowels += substr_count($string, $vowel);
     }
 
     if ($vowels < 3) {
@@ -47,7 +47,7 @@ echo array_reduce($input, static function (int $carry, string $string): int {
     $lastKey = count($letters) - 1;
 
     foreach ($letters as $key => $letter) {
-        if ($key + 1 <= $lastKey && mb_substr_count($string, $letter.$letters[$key + 1]) > 1) {
+        if ($key + 1 <= $lastKey && substr_count($string, $letter.$letters[$key + 1]) > 1) {
             $hasPair = true;
         }
 

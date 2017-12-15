@@ -20,7 +20,7 @@ function find_hash(string $key, int $zeros): int
     $number = -1;
     $zeroStr = str_repeat('0', $zeros);
 
-    while (0 !== mb_strpos(md5($key.$number), $zeroStr)) {
+    while (0 !== strpos(md5($key.$number), $zeroStr)) {
         ++$number;
     }
 
