@@ -50,12 +50,20 @@ function dance(array $programs, array $moves): array
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
 $moves = explode(',', $input);
 $programs = range('a', 'p');
-$programs = dance($programs, $moves);
+$initial = implode('', $programs);
+$rounds = 1000000000;
+$loop = 0;
 
-echo implode('', $programs).PHP_EOL;
+do {
+    $programs = dance($programs, $moves);
+    ++$loop;
 
-$rounds = 1000000000 - 1; // we already danced once
-$rounds %= 48; // it loops after 48 rounds
+    if (1 === $loop) {
+        echo implode('', $programs).PHP_EOL;
+    }
+} while (implode('', $programs) !== $initial);
+
+$rounds = ($rounds - $loop) % $loop;
 
 for ($i = 0; $i < $rounds; ++$i) {
     $programs = dance($programs, $moves);
