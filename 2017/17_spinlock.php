@@ -24,9 +24,10 @@ function get_last_index(int $iterations, int $steps): int
     return $index;
 }
 
-function get_value_at_index(int $wanted, int $iterations, int $steps): int
+function get_value_at_index(int $iterations, int $steps, ?int $wanted = null): int
 {
     $index = get_last_index($iterations, $steps);
+    $wanted = $wanted ?? $index;
 
     for ($i = $iterations; $i > 0; --$i) {
         $index = abs($index + $i - $steps - 1) % $i;
@@ -42,10 +43,9 @@ function get_value_at_index(int $wanted, int $iterations, int $steps): int
 }
 
 $steps = (int) read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$wanted = get_last_index(2017, $steps);
 
-echo get_value_at_index($wanted, 2017, $steps).PHP_EOL;
-echo get_value_at_index(1, 50000000, $steps).PHP_EOL;
+echo get_value_at_index(2017, $steps).PHP_EOL;
+echo get_value_at_index(50000000, $steps, 1).PHP_EOL;
 
 __halt_compiler();
 343
