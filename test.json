@@ -529,6 +529,14 @@
             }
         ],
         "19": [
+            {
+                "input": "     |          \n     |  +--+    \n     A  |  C    \n F---|----E|--+ \n     |  |  |  D \n     +B-+  +--+ ",
+                "expected": ["ABCDEF", "38"]
+            },
+            {
+                "input": null,
+                "expected": ["QPRYCIOLU", "16162"]
+            }
         ],
         "20": [
         ],
