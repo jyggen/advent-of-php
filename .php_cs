@@ -71,7 +71,6 @@ $rules = [
 
 $finder->in(__DIR__);
 $finder->name('.php_cs');
-$finder->name('generate-classes');
 $finder->ignoreDotFiles(false);
 
 $config->setFinder($finder);

@@ -35,7 +35,7 @@ function add_group_number(array $disk, int $y, int $x, int $groupNumber): array
     $disk[$y][$x] = $groupNumber;
 
     foreach ($directions as $direction) {
-        if (false === isset($disk[$direction[0]][$direction[1]]) || $disk[$direction[0]][$direction[1]] !== true) {
+        if (false === isset($disk[$direction[0]][$direction[1]]) || true !== $disk[$direction[0]][$direction[1]]) {
             continue;
         }
 
@@ -120,7 +120,7 @@ $groups = 0;
 
 for ($y = 0; $y < 128; ++$y) {
     for ($x = 0; $x < 128; ++$x) {
-        if ($disk[$y][$x] !== true) {
+        if (true !== $disk[$y][$x]) {
             continue;
         }
 

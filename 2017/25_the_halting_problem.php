@@ -65,7 +65,7 @@ for ($i = 0; $i < $steps; ++$i) {
 
     $value = $tape[$position];
     $tape[$position] = $states[$state][$value]['write'];
-    $position += $states[$state][$value]['move'] === 'left' ? -1 : 1;
+    $position += 'left' === $states[$state][$value]['move'] ? -1 : 1;
     $state = $states[$state][$value]['state'];
 }
 

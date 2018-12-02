@@ -30,7 +30,7 @@ function solve_part_one(array $grid): int
             $grid[$y][$x] = '.';
         }
 
-        $direction = $grid[$y][$x] === '#'
+        $direction = '#' === $grid[$y][$x]
             ? $direction + 1
             : $direction - 1;
 
@@ -40,11 +40,11 @@ function solve_part_one(array $grid): int
             $direction = UP;
         }
 
-        $grid[$y][$x] = $grid[$y][$x] === '#'
+        $grid[$y][$x] = '#' === $grid[$y][$x]
             ? '.'
             : '#';
 
-        if ($grid[$y][$x] === '#') {
+        if ('#' === $grid[$y][$x]) {
             ++$infected;
         }
 
@@ -103,7 +103,7 @@ function solve_part_two(array $grid): int
             $direction -= 4;
         }
 
-        if ($grid[$y][$x] === '#') {
+        if ('#' === $grid[$y][$x]) {
             ++$infected;
         }
 

@@ -121,7 +121,7 @@ final class Maze
             [$y, $x - 1],
         ];
 
-        if ($rows[$y][$x] === '.') {
+        if ('.' === $rows[$y][$x]) {
             $rows[$y][$x] = 'o';
 
             unset($remaining[$y][$x]);
@@ -134,7 +134,7 @@ final class Maze
         ++$step;
 
         foreach ($directions as $pos) {
-            if (false === isset($rows[$pos[0]][$pos[1]]) || $rows[$pos[0]][$pos[1]] === '#') {
+            if (false === isset($rows[$pos[0]][$pos[1]]) || '#' === $rows[$pos[0]][$pos[1]]) {
                 continue;
             }
 

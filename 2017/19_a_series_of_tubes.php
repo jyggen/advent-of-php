@@ -48,7 +48,7 @@ while (true) {
             break;
     }
 
-    if ($rows[$y][$x] !== '|' && $rows[$y][$x] !== '-') {
+    if ('|' !== $rows[$y][$x] && '-' !== $rows[$y][$x]) {
         if (1 === preg_match('/^[A-Z]$/i', $rows[$y][$x])) {
             $letters[] = $rows[$y][$x];
         }
@@ -62,7 +62,7 @@ while (true) {
 
         foreach ($possibilities as $direction => $possibility) {
             if (true === isset($rows[$possibility[0]][$possibility[1]]) &&
-                $rows[$possibility[0]][$possibility[1]] !== ' ') {
+                ' ' !== $rows[$possibility[0]][$possibility[1]]) {
                 continue 2;
             }
         }

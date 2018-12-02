@@ -84,7 +84,7 @@ final class Tower
 
     public function getInclusiveWeight(): int
     {
-        return array_reduce($this->children, static function (int $weight, Tower $tower): int {
+        return array_reduce($this->children, static function (int $weight, self $tower): int {
             return $weight + $tower->getInclusiveWeight();
         }, $this->getExclusiveWeight());
     }
