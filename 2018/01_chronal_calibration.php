@@ -18,19 +18,20 @@ $changes = array_map('\intval', explode("\n", $input));
 
 echo array_sum($changes).PHP_EOL;
 
+$numOfFrequences = count($changes);
+$index = 0;
 $frequence = 0;
 $frequences = [$frequence];
 
 while (true) {
-    foreach ($changes as $change) {
-        $frequence += (int) $change;
+    $frequence += (int) $changes[$index];
 
-        if (in_array($frequence, $frequences, true)) {
-            break 2;
-        }
-
-        $frequences[] = $frequence;
+    if (in_array($frequence, $frequences, true)) {
+        break;
     }
+
+    $frequences[] = $frequence;
+    $index = ($index + 1) % $numOfFrequences;
 }
 
 echo $frequence;
