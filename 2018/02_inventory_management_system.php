@@ -46,8 +46,10 @@ foreach ($ids as $id) {
     }
 }
 
-echo($twos * $threes).PHP_EOL;
-echo implode('', $common).PHP_EOL;
+echo $twos * $threes;
+echo PHP_EOL;
+echo implode('', $common);
+echo PHP_EOL;
 
 __halt_compiler();
 wxlnjevbfozadyiqpuzkrhstkg
