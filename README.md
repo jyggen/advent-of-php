@@ -4,12 +4,12 @@ My solutions to Advent of Code in PHP.
 
 ## Examples
 
-Run the code a specific day:
+Run the code for a specific day:
 ```shell
 $ php 2017/03_spiral_memory.php
 ```
 
-Run the code a specific day with custom input:
+Run the code for a specific day with custom input:
 ```shell
 $ php 2017/03_spiral_memory.php 1024
 ```
