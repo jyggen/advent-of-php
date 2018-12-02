@@ -14,13 +14,9 @@ declare(strict_types=1);
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
-$changes = explode("\n", $input);
+$changes = array_map('\intval', explode("\n", $input));
 
-echo array_reduce($changes, static function (int $carry, string $change): int {
-    $carry += (int) $change;
-
-    return $carry;
-}, 0).PHP_EOL;
+echo array_sum($changes).PHP_EOL;
 
 $frequence = 0;
 $frequences = [$frequence];
