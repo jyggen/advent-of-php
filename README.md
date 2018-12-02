@@ -1,6 +1,6 @@
 # Advent of Code
 
-My solutions to Advent of Code in PHP.
+Advent of Code solutions written in PHP.
 
 ## Examples
 
