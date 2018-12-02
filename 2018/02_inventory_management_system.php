@@ -1,0 +1,302 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of boo/advent-of-php.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+$input = read_input($argv, __FILE__, __COMPILER_HALT_OFFSET__);
+$ids = explode("\n", $input);
+$twos = 0;
+$threes = 0;
+$lowest = null;
+$common = null;
+
+foreach ($ids as $id) {
+    $letters = str_split($id);
+    $count = array_count_values($letters);
+
+    if (in_array(2, $count, true)) {
+        ++$twos;
+    }
+
+    if (in_array(3, $count, true)) {
+        ++$threes;
+    }
+
+    foreach ($ids as $id2) {
+        if ($id === $id2) {
+            continue;
+        }
+
+        $distance = levenshtein($id, $id2);
+
+        if (null === $lowest || $lowest > $distance) {
+            $lowest = $distance;
+            $common = array_intersect_assoc($letters, str_split($id2));
+        }
+    }
+}
+
+echo($twos * $threes).PHP_EOL;
+echo implode('', $common).PHP_EOL;
+
+__halt_compiler();
+wxlnjevbfozadyiqpuzkrhstkg
+wxlsjivbfodamyiqpuzcxhstkg
+wxlnjevbfouammnqpuzcrhstkg
+wxlnjevbfobwmyiqpuzprhstkg
+wxlnjefbfodamyiqpuzcnustkg
+wxlnjevbfodakyyupuzcrhstkg
+wxlnjejbfodafynqpuzcrhstkg
+wxlnjevbfodomyifptzcrhstkg
+wxlnjevbfodamyiwcuzcrhstkz
+wxlnjevbfofamyiqpuznrhstxg
+wxlnjevbfodamyiqbupcrxstkg
+wxjnjevbfodxmyeqpuzcrhstkg
+xwlnjevbfosamyiqpuzcrhstkg
+fxlnjevbfodrmyiqpuzcrbstkg
+wxlnjevpfodamyiqquzzrhstkg
+wwlnjenbfodawyiqpuzcrhstkg
+wxrnjevbfodamyiqpuzlrhstrg
+welnjeqbfodkmyiqpuzcrhstkg
+walnjfvbfodamyiqpuzcrhwtkg
+wdlnjevbfodamriqpuzjrhstkg
+wxlnjevbfodmnyizpuzcrhstkg
+wxlnjevbfodgmyiqpuxcrjstkg
+wxlnjevbfkdamyiqpudcrestkg
+wxlyjevbfodamyiqpuzcehstkj
+wxlnjevamodamyiqpuzcrhatkg
+fxlnqevsfodamyiqpuzcrhstkg
+wqlnjevbfodanyiqvuzcrhstkg
+wxlnjevbfoiamyzqpuzcrnstkg
+wxlnjevbfodamyiqpuacrhsjig
+wxlnjuvbfodzmyvqpuzcrhstkg
+kxlnjevbfolamviqpuzcrhstkg
+wxlnjesbfldamyiqpuycrhstkg
+nxltjevbfodgmyiqpuzcrhstkg
+ojlnjevbfooamyiqpuzcrhstkg
+wxlnjevbfodaffiqpugcrhstkg
+cxlnievbfodamyuqpuzcrhstkg
+wxlouevbjodamyiqpuzcrhstkg
+wafnjevbfhdamyiqpuzcrhstkg
+wxlnjevbfxdamrpqpuzcrhstkg
+wxlnjepffodamyiqphzcrhstkg
+wxlnkevbfohamciqpuzcrhstkg
+wzlnmevdfodamyiqpuzcrhstkg
+wxlzjtvbfodamyiqpuzcrhstkd
+gxlnjehbfojamyiqpuzcrhstkg
+wxlnjeoqfodamyiqprzcrhstkg
+nxllvevbfodamyiqpuzcrhstkg
+wxlnjevtfomamyiqpurcrhstkg
+sxlnjevafodamyikpuzcrhstkg
+wxlnjevbfodamyfqpuzcyhztkg
+wxlnjevbfodamyiqpulnrhstkh
+wxlnwevbfodumyiqpuzqrhstkg
+wxldjevbfodamyiqpzzcrhstkk
+jxlnjevbfodamyiqphzcrnstkg
+fxlnjeibfodcmyiqpuzcrhstkg
+wxlnjevufodamyiqpnzcrhstkk
+wglnjevbfodamyiqpuzcesstkg
+wxlvjevbdodamyiqpuzcrhstkc
+wxlnjevbfodabyicpuzcrhstkl
+wxlnjevbfodamyiqpizcrhstvt
+wolnjevbfodawyiqiuzcrhstkg
+wxlyjevbfodamyuqpxzcrhstkg
+wxlijevbfodamyikpuzyrhstkg
+wxennevbfodamyiqpuzcrtstkg
+wxlnjevbyodamyuqpwzcrhstkg
+wxlnjevbfoiomyiqpuzcrhsteg
+wxlnjehbrodamyiqpuicrhstkg
+xxlnjevufodamyiqbuzcrhstkg
+wxlojevbfodamyiqpezcrhatkg
+wxljjevbfolamuiqpuzcrhstkg
+wxlnjevbfodamyiqruzcrhstpi
+wxlnjevbfomamyiqjnzcrhstkg
+wxlnjevbfodahyiqzuzcrhstpg
+wxtnjevbfodamyiqpuzcrhsdrg
+wxlnjevbfodamynrpuzcrhstkz
+wxlqjevefqdamyiqpuzcrhstkg
+wxlnjevbfmdamyiqnuzckhstkg
+wxlnjevbfodajyiqprzcrjstkg
+wxlnjqvbhodamyidpuzcrhstkg
+wxlnjhvbfodamriqpuzcchstkg
+wglnjevbfodamyiqpupfrhstkg
+wulnjevdfodamyiqpuzcrhsteg
+vxlojevbfodamyiqpuzcrhstsg
+wxlnjvvbfodamiiqpuzcrhttkg
+wxlnjevbfodabyiqpuzzrhetkg
+wxhnjevbfodamyiqpuwcrsstkg
+wslzjbvbfodamyiqpuzcrhstkg
+rxlnjevbfodhmyiqpupcrhstkg
+wxlnjevbfhdamyiqpuvcrhskkg
+wxlrjevbxodamyiqpuzcrhstag
+wxlsbevbfodammiqpuzcrhstkg
+wxlnjzvbfodemyiqpmzcrhstkg
+wxlnoevbfodgmyiqpuzbrhstkg
+wxlnjefbfodamyinpuzcrhwtkg
+bxlnjevbfwdamyiqpuocrhstkg
+cxlnjevbjodamyiqpuzcrhslkg
+wflnjevbforemyiqpuzcrhstkg
+wxlmjeoboodamyiqpuzcrhstkg
+wxlnjevbfadaiyiqpuzcrhutkg
+wxlnmevbfodamyyqpuzcrjstkg
+wxlnjovbfodamyippjzcrhstkg
+wxlnjmvbfodamyiqpszcrhsbkg
+wxlnjeebfodamyicpuxcrhstkg
+wxlnrehbfodamyiqpuzcrhytkg
+wxlnjevbfogamyiqwurcrhstkg
+wxlujevbnodamyiqpuzcrhstng
+wxlnoenofodamyiqpuzcrhstkg
+wxsnjevbfsdamyiqsuzcrhstkg
+wxlnjevwfodamyiqpuzxrhqtkg
+wxlnjevbnodamyiqxulcrhstkg
+wxlijetpfodamyiqpuzcrhstkg
+wxlnjzvbfidamyiqpuzcrbstkg
+wxlnjevefodavyiqpuzcthstkg
+wxlnjevbfozamyiqpurcrbstkg
+wxlnjfvpfodamyiqpuzcrhntkg
+wxlnjevbfvdamyiqvuzcrhqtkg
+wilejevbfodamyilpuzcrhstkg
+wxlnhevbfodamtiqpuzcrhstke
+wxlwjevbfodahyiqppzcrhstkg
+wxlnjevbfodamyuqpuzwrrstkg
+xxsnjevbfodamyiqpuzcrhstkl
+wglnjevbdodamyaqpuzcrhstkg
+wxlnjefbwodamyiqpuzcrhsykg
+wxwnjevbfodamyiqpuzcrhpckg
+wxlnjuvbfidamyiqpuzczhstkg
+wxlnzhybfodamyiqpuzcrhstkg
+wxunjevufodamyiqpuzcrhspkg
+wxunjevbfodcmyiqpuzcrhstcg
+wxlnjevbfodhwyiqpuxcrhstkg
+wxlnjevtfodasyiqpuzcrhstkb
+wxlvjevbfqdamyiqprzcrhstkg
+sxlnjevbfodamyiqplzcrhstkq
+wxlnlevbfodamyiqpuzcrpstka
+wxlnjevbfodaiyiqovzcrhstkg
+wxlntevbfodamyiqpuzcrkntkg
+wxlnjevbfodsmyiqpuzcrhstir
+wxlnnevbfodaoyiqpuzmrhstkg
+xxlnjevbfodamyinpnzcrhstkg
+wxlnjedefodamyigpuzcrhstkg
+wxlnxeabfodamyiqpnzcrhstkg
+wxlnxevbfodpmtiqpuzcrhstkg
+wxlnjevnfodamyiqpuzcuhqtkg
+wxlnjevbfodakyiqluzcrhstmg
+wxlnjevbaodamoiqpyzcrhstkg
+wwlnjevbfoaajyiqpuzcrhstkg
+wxlnjevbfedamyiqpuzcrhsang
+wxlwjevbfodamyiqpuzcrmdtkg
+wxlnjevbhodamyiqpmzxrhstkg
+wxlnjevbfodamyiqpuzzrhwtkj
+wxlnjevbfpdvmyiqpuzzrhstkg
+wxlnjegcfodamyiqpxzcrhstkg
+fxlnjevbfodamyiqpuzcrhstat
+wxlnjevbfodcmybqpuzcrkstkg
+wxlnjevbfodamiiqpuzrrhstxg
+wxvnjevifodamdiqpuzcrhstkg
+wxltjevbfodamyiqpuzmrhktkg
+wxlnjevbfobaaygqpuzcrhstkg
+wmlnjevbfodamyiqpuycrhsukg
+wxlnjevboodamyiqpuzcrhuhkg
+wxlnjevgfodaqyiqpuzcghstkg
+wxlnjevjnodamyiqpuzcrhstke
+wclnjevbfodamyiqpuncchstkg
+wxlnjevbfndamyxqpuzcshstkg
+rxldjevbfodamyiqpuvcrhstkg
+wxlnwevbfodamywqpuzrrhstkg
+ixlnjevbqodpmyiqpuzcrhstkg
+wxlnjlvbfocamyiqpuzgrhstkg
+wxlnjevffodamyiqnuzcrhutkg
+wxlajevbfodamyiqpuccrhshkg
+vwlnjevbfodamyiqpuzcrhstky
+wxlajevbfodamyiqpuzcfhstkl
+wxlnjevbfodamniqouzcrhstko
+wxlnjevbfodamyiqpuzqrhsqka
+wxlnjeybfodamyiqpuzclhsnkg
+wxbnjlvbfoyamyiqpuzcrhstkg
+wxbnjevbfodemyiqpuzcrhstkj
+wxlnbefbfodamyiqpkzcrhstkg
+wxlnjvvbyodamyitpuzcrhstkg
+jxlnjevbfopamyiqpuzprhstkg
+wxlnjevbfodaeyiupxzcrhstkg
+wnlnjevbfodamyqqpuzcrhstcg
+wxlxzuvbfodamyiqpuzcrhstkg
+wxlnjevbcodymyiqpuzcrhstke
+wxlnjezbfodamynqpuvcrhstkg
+wxlnjevbfodamyxlpuzcyhstkg
+wxlnjevbffdaiyiqpuzirhstkg
+wxlnjevbfodymyiqwuzcrhstfg
+wxlnzevbfodscyiqpuzcrhstkg
+hxlnjevbfodamyawpuzcrhstkg
+welnjevbfodamciqplzcrhstkg
+wxlnjeqbfodawyiqpuzkrhstkg
+wxlnjelbfodamviqpuzckhstkg
+wxlneevjfodamyiqpuzcrhstkd
+wxlnjevbfodamyaqpuytrhstkg
+wxlnjpvyfodamyiqpuzcshstkg
+wxlnjevbfodmbyiqpuzcrhstkp
+wxlnjegbfodamdiqpuzcrhstdg
+wmlnjevbfodamyiqpuecrhsukg
+wxlnjevbfodamyiqpuocrhwtjg
+jxfnwevbfodamyiqpuzcrhstkg
+wxlnjevffodamyiqpurcrhstkd
+wxlnjevbfofamyiqpuzcrhsmkt
+wxlnjevbfodmmyiqpuzcrdsttg
+axlnjevbfodgmyiqpuzerhstkg
+wxtnjevbfodamyifpuwcrhstkg
+wxlgjevbfodamyiqpuzrrhvtkg
+wxlnjevbfouamyeqfuzcrhstkg
+wxlnjevbfmxamyiqpuzcahstkg
+wxlnjevffoxamyiqpuecrhstkg
+wxlnyevbfodamyiqttzcrhstkg
+bxlnjevbfodzmysqpuzcrhstkg
+wxlnjevbfodayyiqpuzcrherkg
+yxlnjevbfodayyiqpuzcrwstkg
+wllnjevbfodambiqpuzurhstkg
+wxlnjevbfsdamyiqpuqcrhstkh
+wxlcjevbfodamyiqcuzcxhstkg
+wxlnjevbfodayticpuzcrhstkg
+wxltzevbfodamyiqpzzcrhstkg
+wxlnjevbfodamgiqpuzcphstng
+wxlnjevbfqdfmziqpuzcrhstkg
+wxlnaevbfodamyiqpuzcfustkg
+wxlnjevbfodamyxqxuzcrhstdg
+wxlnjevkbodamyiqpufcrhstkg
+whlnjevbfodauyiqputcrhstkg
+wxlnjevbfodamyiephzcrhsnkg
+wxlnjevbfodfmoiqpuzcrhstkf
+wxlnjevbfodamyiqxuzaxhstkg
+wxlnjevtfotamyiqpuzcrhsttg
+wxlgjevbfodamyiqpuhcrostkg
+dxlnjtvbfodamyiqpuzcshstkg
+wxlfjevbfodumyiqppzcrhstkg
+wxlnzevbfodamyiqpuzqrhstkx
+wflnjevbfodamyiqpurcrhsthg
+wxlnjevbfodzfyiqpuzcrjstkg
+wxlnjevbfrdamviqpuzmrhstkg
+wnlngevmfodamyiqpuzcrhstkg
+walzjevbfodamyiqpuzcrhsjkg
+wqlnjevbfodamyiqpuzcshslkg
+wxlnjevkfodfmyiepuzcrhstkg
+wxgnjehbfodamyhqpuzcrhstkg
+wxlnjevbfodamyiqfuacrostkg
+wxlnjexbfodamyiwpuzcrqstkg
+wxlntevafodamyiqpuzcrhsnkg
+wxvnjevbfodamyiqpuzcvistkg
+mxlnjeebfodamyiqpuzcrhsgkg
+wxlnjevyfodamyiqpuzcrhdtkf
+wxlnjcvbfodamyicpuzcrhsckg
+wxlnjekbfodlmyiqpuzcthstkg
+wxlnjvvbfodamyiopuzcrhstqg
+wxlnjevbsodamyiqpuhcrhstwg
+wxxnjevufodamyiqruzcrhstkg

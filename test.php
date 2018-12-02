@@ -29,7 +29,7 @@ $colors = new ConsoleColor();
 $tests = json_decode(file_get_contents(__DIR__.'/test.json'), true);
 
 if (JSON_ERROR_NONE !== json_last_error()) {
-    echo json_last_error_msg();
+    echo 'Unable to parse JSON: '.json_last_error_msg();
     exit(1);
 }
 
